@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="./src/Lover.ico" type="image/x-icon">
+  <title>Lover</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+  <style>
+    body {
+      background-color: #333333;
+    }
+
+    .el-select {
+      background-color: #333333;
+      color: #000000;
+    }
+
+    .el-select .el-input,
+    .el-select .el-input__inner {
+      color: #000000;
+    }
+
+    .el-select .el-input__suffix .el-input__suffix-inner {
+      color: #000000;
+      opacity: 0.6;
+    }
+
+    #app {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .el-select {
+      margin-top: -50px;
+      /* 调整下拉框位置 */
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <el-select v-model="selectedOption" placeholder="请选择" @change="handleChange">
+      <el-option v-for="option in options" :key="option.value" :label="option.label" :value="option.value"></el-option>
+    </el-select>
+    <img v-if="selectedOption === 'option1'" src="./src/360p.svg" alt="240p">
+    <img v-if="selectedOption === 'option2'" src="./src/720p.svg" alt="240p">
+    <img v-if="selectedOption === 'option3'" src="./src/1080p.svg" alt="240p">
+    <h1 v-if="selectedOption === 'option4'" style="font-size: 80px;" class="heartbeat">
+      <a href="./photo.html" style="text-decoration: none;" class="heartbeat">
+        <span class="text">I</span>
+        <span class="heart"></span>
+        <span class="text red">YOU</span>
+      </a>
+    </h1>
+
+  </div>
+  <style>
+    @keyframes heartbeat {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    #app {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .heartbeat {
+      display: flex;
+      align-items: center;
+    }
+
+    .heart {
+      animation: heartbeat 1s infinite;
+      margin: 0 5px;
+    }
+
+    .heart::after {
+      content: "❤";
+      color: red;
+    }
+
+    .text {
+      color: white;
+    }
+
+    .red {
+      color: red;
+    }
+  </style>
+
+  <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        options: [
+          { value: 'option1', label: '360p' },
+          { value: 'option2', label: '720p' },
+          { value: 'option3', label: '1080p' },
+          { value: 'option4', label: '2160p' }
+        ],
+        selectedOption: '',
+        selectedContent: ''
+      },
+      methods: {
+        handleChange() {
+          switch (this.selectedOption) {
+            case 'option1':
+              this.selectedContent = '选项1的内容';
+              break;
+            case 'option2':
+              this.selectedContent = '选项2的内容';
+              break;
+            case 'option3':
+              this.selectedContent = '选项3的内容';
+              break;
+            case 'option4':
+              this.selectedContent = '选项3的内容';
+              break;
+            default:
+              this.selectedContent = '';
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

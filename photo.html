@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="./src/Lover.ico" type="image/x-icon">
+  <title>Lover of Our Pass</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <style>
+    body {
+      background-color: #333333;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #app {
+      width: 100%;
+      height: auto; /* 修改为auto */
+    }
+
+    .el-carousel__item h3 {
+      color: #475669;
+      font-size: 14px;
+      opacity: 0.75;
+      line-height: 200px;
+      margin: 0;
+    }
+    
+    .el-carousel__item:nth-child(2n) {
+      background-color: #99a9bf;
+    }
+    
+    .el-carousel__item:nth-child(2n+1) {
+      background-color: #d3dce6;
+    }
+
+    .slide-image {
+      width: 100%; /* 图片宽度设置为100% */
+      height: 100%; /* 图片高度设置为100% */
+      object-fit: cover; /* 使用cover属性使图片完整展示并填充容器 */
+    }
+
+    .transparent-collapse .el-collapse-item {
+      border-color: transparent;
+    }
+
+    .transparent-collapse .el-collapse-item__header {
+      background: transparent;
+      color: white;
+    }
+
+    .transparent-collapse .el-collapse-item__content {
+      background: transparent;
+      color: white;
+    }
+
+    .transparent-collapse .el-collapse-item__content {
+      background: transparent;
+      color: white;
+    }
+
+    .transparent-collapse .el-collapse-item__wrap {
+      background: transparent;
+    }
+
+    .transparent-collapse .el-collapse-item__wrap > div {
+      background: transparent;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <el-carousel :interval="4000" type="card" height="400px">
+      <el-carousel-item v-for="item in 8" :key="item">
+        <img :src="`image/image${item}.jpg`" alt="Slide {{ item }}" class="slide-image">
+      </el-carousel-item>
+    </el-carousel>
+
+    <el-divider content-position="left">关于我们美好的岁月</el-divider>
+    <br>
+    <br>
+
+
+    <el-collapse class="transparent-collapse" v-model="activeName" accordion>
+        <el-collapse-item title="官宣第一天" name="1">
+          <div>我们官宣的第一天是多么的美好</div>
+          <div>我给你发了信息，你是秒回的</div>
+        </el-collapse-item>
+        <el-collapse-item title="一起度过的第一个214情人节" name="2">
+          <div>我去找你，你说我是非常温柔的人</div>
+          <div>你没有那么不耐心</div>
+        </el-collapse-item>
+        <el-collapse-item title="一起度过的第一个520" name="3">
+          <div>520多么美好的数字</div>
+          <div>我喜欢520，更喜欢你</div>
+          <div>但是我们好像感情变淡了</div>
+        </el-collapse-item>
+        <el-collapse-item title="与你离开的那一天" name="4">
+          <div>内心心无旁骛，好像有点小开心</div>
+          <div>但是心里更加空落落的</div>
+        </el-collapse-item>
+      </el-collapse>
+  </div>
+
+  <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+    });
+  </script>
+  <script>
+    export default {
+      data() {
+        return {
+          activeName: '1'
+        };
+      }
+    }
+  </script>
+</body>
+
+</html>
